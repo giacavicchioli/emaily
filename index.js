@@ -13,6 +13,7 @@ require("./services/passport");
 // mongoose connect
 mongoose.connect(keys.mongoURI);
 
+// use cookie for passport auth
 const app = express();
 app.use(
   cookieSession({
@@ -22,7 +23,10 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// require auth routes
 require("./routes/authRoute")(app);
 
+// listen on port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
