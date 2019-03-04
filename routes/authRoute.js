@@ -23,6 +23,6 @@ module.exports = app => {
   });
 
   app.get("/api/current_user", (req, res) => {
-    res.send("current_user:", req.user);
+    res.send(req.user);
   });
 };
