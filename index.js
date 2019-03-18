@@ -28,5 +28,5 @@ app.use(passport.session());
 require("./routes/authRoute")(app);
 
 // listen on port
-const PORT = process.env.PORT || 5556;
+const PORT = process.env.PORT || 5557;
 app.listen(PORT);
