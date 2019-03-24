@@ -1,30 +1,30 @@
-import express from "express";
-import { connect } from "mongoose";
-import cookieSession from "cookie-session";
-import { initialize, session } from "passport";
-import { json } from "body-parser";
-import { mongoURI, cookieKey } from "./config/keys";
+const express = require("express");
+const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+const bodyParser = require("body-parser");
+const keys = require("./config/keys");
 
 // DB model class
-import "./models/User";
+require("./models/User");
 
 // passport setup
-import "./services/passport";
+require("./services/passport");
 
 // mongoose connect
-connect(mongoURI);
+mongoose.connect(keys.mongoURI);
 
 // use cookie for passport auth
 const app = express();
-app.use(json());
+app.use(bodyParser.json());
 app.use(
   cookieSession({
     maxAge: 20 * 24 * 60 * 60 * 1000,
-    keys: [cookieKey]
+    keys: [keys.cookieKey]
   })
 );
-app.use(initialize());
-app.use(session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // require auth routes
 require("./routes/authRoutes")(app);

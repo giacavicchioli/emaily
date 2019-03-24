@@ -1,5 +1,5 @@
-import requireLogin from "../middlewares/requireLogin";
-import keys from ("../config/keys");
+const requireLogin = require("../middlewares/requireLogin");
+const keys = require("../config/keys");
 var stripe = require("stripe")(keys.stripeSecretKey);
 
 module.exports = app => {
