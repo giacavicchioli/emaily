@@ -1,9 +1,11 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 class Payments extends React.Component {
   onToken = token => {
-    console.log(token);
+    this.props.handleToken(token);
   };
 
   render() {
@@ -21,4 +23,7 @@ class Payments extends React.Component {
   }
 }
 
-export default Payments;
+export default connect(
+  null,
+  actions
+)(Payments);
