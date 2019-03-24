@@ -10,6 +10,11 @@ module.exports = app => {
       description: "charge for some credits"
     });
 
+    req.user.credits += 5;
+    const user = await req.user.save();
+
+    res.send(user);
+
     console.log(charge);
   });
 };
