@@ -18,7 +18,7 @@
     "type": "git",
     "url": "https://github.com/giacavicchioli/emaily.git"
   },
-  "author": "",
+  "author": "Giacomo Cavicchioli",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
