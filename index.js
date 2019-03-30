@@ -7,6 +7,7 @@ const keys = require("./config/keys");
 
 // DB model class
 require("./models/User");
+require("./models/Survey");
 
 // passport setup
 require("./services/passport");
