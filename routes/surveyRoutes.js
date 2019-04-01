@@ -21,11 +21,23 @@ module.exports = app => {
       dateSent: Date.now()
     });
 
+    console.log(survey);
+
     // attempt to create and send email
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    mailer.send();
 
-    // save survey
-    // survey.save();
+    try {
+      await mailer.send();
+
+      // await survey.save();
+      // req.user.credits -= 1;
+      const user = await req.user.save();
+
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+      console.error(err);
+      console.error(err.response.body.errors);
+    }
   });
 };
