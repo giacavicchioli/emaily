@@ -7,7 +7,7 @@ import * as actions from "../actions";
 import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
-const SourveyNew = () => <h2>SourveyNew</h2>;
+import SourveyNew from "./surveys/SurveyNew";
 
 class App extends React.Component {
   componentDidMount() {
