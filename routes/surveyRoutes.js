@@ -15,8 +15,6 @@ module.exports = app => {
   });
 
   app.post("/api/surveys/webhooks", (req, res) => {
-    console.log(req.body);
-
     try {
       const p = new Path("/api/surveys/:surveyId/:choice");
 
@@ -42,10 +40,7 @@ module.exports = app => {
               $set: { "recipients.$.respondend": true },
               lastResponded: new Date()
             }
-          ).exec((err, val) => {
-            console.log("Error: ", err);
-            console.log("Val: ", val);
-          });
+          ).exec();
         })
         .value();
       res.send({});
